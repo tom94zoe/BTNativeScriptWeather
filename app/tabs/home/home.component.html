@@ -2,7 +2,20 @@
 This is the component view that represents the 'Home' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
+<ActionBar class="action-bar">
+    <Label class="action-bar-title" [text]="greeting"></Label>
+    <!--<Button (tap)="openAction()" text></Button>-->
+    <ActionItem ios.systemIcon="9" ios.position="right" (tap)="openAction()"></ActionItem>
+</ActionBar>
+<SearchBar hint="Search your City" (textChange)="filterCities($event)" ></SearchBar>
+
 <GridLayout class="page page-content" tkMainContent>
-    <Label class="page-icon fa" text="&#xf015;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+    <ListView [items]="cities" class="list-group">
+        <ng-template let-city="item">
+            <GridLayout  columns="auto,*"  horizontalAlignment="stretch">
+               <Label [text]="city.name" col="0" horizontalAlignment="left"></Label>
+                <Button class="btn btn-active btn-primary btnIcon" col="1" text="&#xf30f;" horizontalAlignment="right" (tap)="selectCity(city)"></Button>
+            </GridLayout>
+        </ng-template>
+    </ListView>
 </GridLayout>

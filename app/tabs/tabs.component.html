@@ -1,6 +1,6 @@
-<ActionBar class="action-bar">
+<!-- <ActionBar class="action-bar">
     <Label class="action-bar-title" [text]="title"></Label>
-</ActionBar>
+</ActionBar> -->
 
 <!--
 The TabView component provides a simple way to navigate between different views by
@@ -8,12 +8,12 @@ tapping on some of the tabs or by swiping between the views.
 Learn more about the TabView component in this documentation article:
 http://docs.nativescript.org/angular/code-samples/ui/tab-view
 -->
-<TabView (selectedIndexChanged)="onSelectedIndexChanged($event)">
+<TabView (selectedIndexChanged)="onSelectedIndexChanged($event)" id="tabViewIdsId">
     <!--
     To add a new TabView item, add a new layout component with a tabItem Angular directive.
     Assign the tabItem directive an object that declares the tab item button's title and icon source.
     -->
-    <StackLayout *tabItem="{title: 'Home', iconSource: getIconSource('home')}">
+    <StackLayout *tabItem="{title: 'Overview', iconSource: getIconSource('list')}">
         <!--
         You can declare the layout and components of each view inside the TabView items directly.
         In this case the view contents and back end logic are separated in nested components.
@@ -21,11 +21,11 @@ http://docs.nativescript.org/angular/code-samples/ui/tab-view
         -->
         <Home></Home>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Browse', iconSource: getIconSource('browse')}">
-        <Browse></Browse>
+    <StackLayout *tabItem="{title: 'Temperature', iconSource: getIconSource('temperature')}">
+        <Temperature></Temperature>
     </StackLayout>
-    <StackLayout *tabItem="{title: 'Search', iconSource: getIconSource('search')}">
-        <Search></Search>
+    <StackLayout *tabItem="{title: 'Percipitate', iconSource: getIconSource('percipitate')}">
+        <Percipitate></Percipitate>
     </StackLayout>
  <!--   <StackLayout *tabItem="{title: 'Featured', iconSource: getIconSource('favorites')}">
         <Featured></Featured>

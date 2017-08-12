@@ -4,20 +4,25 @@ import { NSModuleFactoryLoader } from "nativescript-angular/router";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-
+import {FilterServiceProvider} from "./providers/filter-service/filter-service";
+import {WeatherServiceProvider} from "./providers/weather-service/weather-service";
+import { NativeScriptHttpModule } from "nativescript-angular";
 @NgModule({
     bootstrap: [
         AppComponent
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NativeScriptHttpModule
     ],
     declarations: [
         AppComponent
     ],
     providers: [
-        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader }
+        { provide: NgModuleFactoryLoader, useClass: NSModuleFactoryLoader },
+        WeatherServiceProvider ,
+        FilterServiceProvider
     ],
     schemas: [
         NO_ERRORS_SCHEMA
