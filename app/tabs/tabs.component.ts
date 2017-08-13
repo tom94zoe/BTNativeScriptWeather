@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { isAndroid } from "platform";
-import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
+import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view/tab-view";
 
 @Component({
     selector: "TabsComponent",
@@ -52,8 +52,8 @@ export class TabsComponent implements OnInit {
     *************************************************************/
     onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
         const tabView = <TabView>args.object;
-        const selectedTabViewItem = tabView.items[args.newIndex];
 
+        const selectedTabViewItem = tabView.items[args.newIndex];
         this.title = selectedTabViewItem.title;
     }
 }

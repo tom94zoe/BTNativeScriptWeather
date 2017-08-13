@@ -34,6 +34,7 @@ export class WeatherServiceProvider {
     var matchingCities = possibleCities.filter((city:WeatherCity) => city.name == 'Wien');
     if(matchingCities.length > 0){
       this.selectedCity = matchingCities[0];
+      console.log('preselected city')
     }
   }
 
@@ -47,7 +48,7 @@ export class WeatherServiceProvider {
 
   getPercipitateForecast(cityId):Observable<Array<WeatherDataEntry>>{
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?id='+cityId + '&appid=' + this.appID).map(res=>  res.json().list
+    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?id='+cityId + '&appid=' + this.appID).map(res=>  res.json().list
       .map((entry:WeatherDataEntry) => {
         console.log(entry);
         entry.date = new Date(entry.dt * 1000);
@@ -60,7 +61,7 @@ export class WeatherServiceProvider {
 
   getTemperatureForecast(cityId): Observable<Array<WeatherDataEntry>>{
 
-    return this.http.get('http://api.openweathermap.org/data/2.5/forecast?id='+cityId + '&appid=' + this.appID).map(res=>  res.json().list
+    return this.http.get('https://api.openweathermap.org/data/2.5/forecast?id='+cityId + '&appid=' + this.appID).map(res=>  res.json().list
       .map((entry:WeatherDataEntry) => {
         entry.main.temp_celsius = entry.main.temp - 273.15;
         entry.date = new Date(entry.dt * 1000);
@@ -72,9 +73,9 @@ export class WeatherServiceProvider {
   setIconPath(entry:WeatherDataEntry){
     var path:string = '';
     switch (entry.weather[0].main) {
-      case 'Clear': path = './assets/icon/weather-sunny.svg'; break;
-      case 'Rain': path = './assets/icon/weather-rainy.svg'; break;
-      case 'Clouds': path = './assets/icon/weather-cloudy.svg'; break;
+      case 'Clear': path = '~/weather-sunny.png'; break; 
+      case 'Rain': path = '~/weather-rainy.png'; break;
+      case 'Clouds': path = '~/weather-cloudy.png'; break;
     }
     entry.weather[0].iconRef = path;
   }

@@ -2,7 +2,22 @@
 This is the component view that represents the 'Featured' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
-<GridLayout class="page page-content" tkMainContent>
-    <Label class="page-icon fa" text="&#xf005;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+
+<ActionBar class="action-bar" *ngIf="selectedCity">
+    <Label class="action-bar-title" [text]="selectedCity.name" ></Label>
+    <!--<Button (tap)="openAction()" text></Button>-->
+</ActionBar>
+<GridLayout class="page page-content" tkMainContent >
+    <ListView [items]="temperatureList" *ngIf="temperatureList.length > 0" class="list-group">
+        <ng-template let-temperatureEntry="item">
+            <GridLayout  columns="auto,*,auto"  horizontalAlignment="stretch">
+                <Label [text]="temperatureEntry.date | date: 'MM/dd hh:mm'" col="0" style="margin-right:1rem"></Label>
+                <GridLayout columns="auto,auto" col="1" horizontalAlignment="center">
+                <Label [text]="temperatureEntry.main.temp_celsius | number: '2.2-2'" col="0" ></Label>
+                <Label text=" °C" col="1" ></Label>
+                </GridLayout>
+                <Image [src]="temperatureEntry.weather[0].iconRef" col="2"></Image>
+            </GridLayout>
+        </ng-template>
+    </ListView>
 </GridLayout>

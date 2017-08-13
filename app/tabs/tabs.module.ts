@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
-import { TemperatureComponente } from "./temperature/temperature.component";
+import { TemperatureComponent } from "./temperature/temperature.component";
 import { HomeComponent } from "./home/home.component";
 import { PercipitateComponent } from "./percipitate/percipitate.component";
 import { TabsRoutingModule } from "./tabs-routing.module";
@@ -20,7 +20,7 @@ import {TabView} from "tns-core-modules/ui/tab-view/tab-view";
         TabsComponent,
         HomeComponent,
         PercipitateComponent,
-        TemperatureComponente
+        TemperatureComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

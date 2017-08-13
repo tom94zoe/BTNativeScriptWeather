@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
      salutation: string = "Hi";
      greeting: string;
      promptOptions: PromptOptions;
+    
 
     constructor(private _page:Page, private weatherService: WeatherServiceProvider) {
         /* ***********************************************************
@@ -69,6 +70,7 @@ export class HomeComponent implements OnInit {
     selectCity(city){
         this.weatherService.setSelectedCity(city);
         var tabview = <TabView> this._page.getViewById("tabViewIdsId");
+        
         tabview.selectedIndex = 1;
     }
 
