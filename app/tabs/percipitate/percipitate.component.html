@@ -2,7 +2,45 @@
 This is the component view that represents the 'Search' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
-<GridLayout class="page page-content" tkMainContent>
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+<ActionBar class="action-bar" *ngIf="showActionBar">
+    <ActionItem ios.systemIcon="21" ios.position="left" (tap)="closeSearchFilter(false)"
+                *ngIf="settingsAreActive"></ActionItem>
+    <Label class="action-bar-title" [text]="selectedCity.name"></Label>
+
+</ActionBar>
+
+<GridLayout class="page page-content" rows="auto,*" tkMainContent *ngIf="!settingsAreActive">
+    <Button (tap)="openSearchFilter()" text="Percipitate Settings" class="btn btn-primary" row="0"></Button>
+    <ListView [items]="percipitateList" *ngIf="percipitateList.length > 0" class="list-group" row="1">
+        <ng-template let-percipitateEntry="item">
+            <GridLayout columns="auto,*" horizontalAlignment="stretch">
+                <Label [text]="percipitateEntry.date | date: 'MM/dd hh:mm'" col="0" style="margin-right:1rem"></Label>
+                <Label [text]="percipitateEntry.rain['3h'] | number: '1.2-4'" col="1"
+                       horizontalAlignment="right"></Label>
+
+            </GridLayout>
+        </ng-template>
+    </ListView>
+
+</GridLayout>
+
+<GridLayout class="page page-content" rows="auto,*,auto" tkMainContent *ngIf="settingsAreActive">
+    <Label text="Percipitate Filter" row="0"></Label>
+    <GridLayout horizontalAlignment="stretch" columns="auto,*" rows="auto,auto,auto,auto,auto" row="1" class="form">
+        <Label col="0" row="0" text="Day"></Label>
+        <Switch col="1" row="0" [(ngModel)]="Day" horizontalAlignment="right"></Switch>
+        <Label col="0" row="1" text="Night"></Label>
+        <Switch col="1" row="1" [(ngModel)]="Night" horizontalAlignment="right"></Switch>
+        <StackLayout class="input-field"  horizontalAlignment="stretch" col="0" row="2" colSpan="2">
+            <Label class="label"  text="Filter Name" col="0" row="2"></Label>
+            <TextField id="customNameTextField" [(ngModel)]="customName"
+                       class="input input-border" col="1" row="2"></TextField>
+        </StackLayout>
+
+        <Label col="0" row="3" text="Starting Time"></Label>
+        <TimePicker [(ngModel)]='startingTime' col="0" row="4" colSpan="2" class="m-15"></TimePicker>
+
+    </GridLayout>
+    <Button (tap)="closeSearchFilter(true)" text="apply settings" class="btn btn-primary" row="2"></Button>
+
 </GridLayout>

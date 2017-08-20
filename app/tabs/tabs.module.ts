@@ -9,11 +9,13 @@ import { TabsComponent } from "./tabs.component";
 import {WeatherServiceProvider} from "../providers/weather-service/weather-service";
 import {FilterServiceProvider} from "../providers/filter-service/filter-service";
 import {TabView} from "tns-core-modules/ui/tab-view/tab-view";
+import {NativeScriptFormsModule} from "nativescript-angular/forms";
 
 @NgModule({
     imports: [
         NativeScriptModule,
-        TabsRoutingModule
+        TabsRoutingModule,
+        NativeScriptFormsModule
 
     ],
     declarations: [

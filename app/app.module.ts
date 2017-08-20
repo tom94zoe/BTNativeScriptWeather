@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import {FilterServiceProvider} from "./providers/filter-service/filter-service";
 import {WeatherServiceProvider} from "./providers/weather-service/weather-service";
 import { NativeScriptHttpModule } from "nativescript-angular";
+import {NativeScriptFormsModule} from "nativescript-angular/forms";
 @NgModule({
     bootstrap: [
         AppComponent
@@ -14,7 +15,8 @@ import { NativeScriptHttpModule } from "nativescript-angular";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptHttpModule
+        NativeScriptHttpModule,
+        NativeScriptFormsModule
     ],
     declarations: [
         AppComponent

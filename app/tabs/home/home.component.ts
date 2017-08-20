@@ -4,6 +4,7 @@ import {prompt, PromptResult, inputType, PromptOptions} from "tns-core-modules/u
 import {WeatherCity} from "../../models/weather-city";
 import {WeatherServiceProvider} from "../../providers/weather-service/weather-service";
 import {TabView} from "tns-core-modules/ui/tab-view/tab-view";
+import {setTimeout} from "tns-core-modules/timer/timer";
 
 @Component({
     selector: "Home",
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
      salutation: string = "Hi";
      greeting: string;
      promptOptions: PromptOptions;
+     busy:boolean = true;
     
 
     constructor(private _page:Page, private weatherService: WeatherServiceProvider) {
@@ -29,6 +31,7 @@ export class HomeComponent implements OnInit {
         /* ***********************************************************
         * Use the "ngOnInit" handler to initialize data for the view.
         *************************************************************/
+        setTimeout(() => this.busy= false, 1500);
         this.buildGreeting(null);
         this.promptOptions = {
             title: "Enter your name",

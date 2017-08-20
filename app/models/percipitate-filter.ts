@@ -3,12 +3,9 @@
  */
 import {TimePicker} from "tns-core-modules/ui/time-picker/time-picker";
 export class PercipitateFilter{
-
-  public dualPercipitateValue:RangeDualKnobs = null;
-  public dayTime : DayTime = DayTime.None;
-  public fromDate:TimePicker = null;
-  public toDate:TimePicker = null;
-  public dualPercipitateValueActive:boolean = false; 
+  public enableDay : boolean;
+  public enableNight: boolean;
+  public fromDate:Date = null;
 }
 
 export class RangeDualKnobs{

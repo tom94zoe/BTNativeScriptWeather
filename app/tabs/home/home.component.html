@@ -8,8 +8,8 @@ Feel free to customize layouts and components to change how the tab view looks.
     <ActionItem ios.systemIcon="9" ios.position="right" (tap)="openAction()"></ActionItem>
 </ActionBar>
 <SearchBar hint="Search your City" (textChange)="filterCities($event)" ></SearchBar>
-
-<GridLayout class="page page-content" tkMainContent>
+<ActivityIndicator [busy]="busy" width="100" class="activity-indicator" *ngIf="busy"></ActivityIndicator>
+<GridLayout class="page page-content" tkMainContent *ngIf="!busy">
     <ListView [items]="cities" class="list-group">
         <ng-template let-city="item">
             <GridLayout  columns="auto,*"  horizontalAlignment="stretch">
@@ -19,3 +19,4 @@ Feel free to customize layouts and components to change how the tab view looks.
         </ng-template>
     </ListView>
 </GridLayout>
+

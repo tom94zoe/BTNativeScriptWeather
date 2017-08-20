@@ -3,7 +3,7 @@ This is the component view that represents the 'Featured' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
 
-<ActionBar class="action-bar" *ngIf="selectedCity">
+<ActionBar class="action-bar" *ngIf="showActionBar">
     <Label class="action-bar-title" [text]="selectedCity.name" ></Label>
     <!--<Button (tap)="openAction()" text></Button>-->
 </ActionBar>
